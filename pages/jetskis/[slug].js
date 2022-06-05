@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { client, urlFor } from '../../lib/client'
 import { Jetski } from '../../components'
 
 const JetskiDetail = ({ jetski, jetskis }) => {
+  const [viewOthers, setViewOthers ] = useState(false)
+
   return (
     <div>
       <img src={urlFor(jetski.image[0])} height={250} />
@@ -21,17 +23,26 @@ const JetskiDetail = ({ jetski, jetskis }) => {
             <button className='rounded w-1/2 bg-blue-700 text-white font-bold'>Book</button>
           </Link>
         </div>
-        <Link href='/#catalog'>
+        {/* <Link href='/#catalog'>
           <button className='w-full border-4 border-white rounded-b py-2 text-white font-bold'>Catalog</button>
-        </Link>
+        </Link> */}
       </div>
-      <div className='mx-3'>
-        <h1 className={`${!jetskis[0] && 'hidden'}`}>OTHERS</h1>
-        <div className='grid grid-cols-2'>
-          {jetskis.map((jetski) => (
-            <Jetski jetski={jetski} />
-          ))}
-        </div>
+      <div className='mt-9 px-3'>
+        {!viewOthers ? (
+          <button onClick={() => setViewOthers(true)} className='text-white border-2 border-white w-full py-2 hover:bg-white hover:text-black font-bold'>View Catalog</button>
+        ) : (
+          <button onClick={() => setViewOthers(false)} className='text-white border-2 border-white w-full py-2 hover:bg-white hover:text-black font-bold'>Close Catolog</button>
+        )}
+        {viewOthers &&
+          <div>
+            <h1 className={`${!jetskis[0] && 'hidden'} text-white font-bold mt-6`}>OTHERS</h1>
+            <div className='grid grid-cols-2 gap-1'>
+              {jetskis.map((jetski) => (
+                <Jetski jetski={jetski} />
+              ))}
+            </div>
+          </div>
+        }
       </div>
     </div>
   )

@@ -4,7 +4,7 @@ import Footer from './Footer'
 
 const Layout = ({ children }) => {
   return (
-    <div className='layout bg-[#333] h-screen w-screen'>
+    <div className='layout h-full w-full'>
       <Navbar />
       <div className='pt-14'>
         {children}

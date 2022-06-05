@@ -8,7 +8,7 @@ const Navbar = () => {
     <div className='fixed bg-[#333] w-full py-4 px-3 text-white z-50'>
       <div className='flex items-center justify-between'>
         <Link href='/'>
-          <h1 className='font-bold'>LOGO HERE</h1>
+          <h1 className='font-bold cursor-pointer'>LOGO HERE</h1>
         </Link>
         <div className='flex gap-1 justify-center items-center'>
           <div className='hidden md:flex'>

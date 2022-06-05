@@ -13,8 +13,11 @@ const Home = ({ jetskis, banners }) => {
       </Head> 
 
       <Header headerBanner={banners?.length && banners[0]} />
-      <h1 id='catalog' className='text-xl text-white font-bold my-3 px-3'>CATALOG</h1>
-      <div className='jetskis grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-3 px-3'>
+      <div className='flex px-3 justify-between items-center'>
+        <h1 id='catalog' className='text-xl text-white font-bold my-3'>CATALOG</h1>
+        <button className='text-white hover:underline'>View all</button>
+      </div>
+      <div className='jetskis grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-3 px-3 gap-3'>
         {jetskis.map((jetski) => (
           <Jetski key={jetski._id} jetski={jetski} />
         ))}
