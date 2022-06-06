@@ -45,6 +45,12 @@ export default {
       name: 'available',
       title: 'Available',
       type: 'string'
+    },
+    {
+      name: 'bookings',
+      title: 'Bookings',
+      type: 'array',
+      of: [{ type: 'date' }],
     }
   ]
 }
