@@ -1,30 +1,25 @@
 import React from 'react'
 import Link from 'next/link'
 import { urlFor } from '../lib/client'
+import { BsFillArrowRightCircleFill } from 'react-icons/bs'
 
 const Jetski = ({ jetski }) => {
   return (
-    <div className='h-full'>
-      <div className='h-full'>
-        <div className='grid grid-rows-3 h-1/4'>
-          <img src={urlFor(jetski.image && jetski.image[0])}
-            width={210}
-            height={210}
-            className='rounded-t'
-          />
+    <div className='bg-[white] p-3 rounded-2xl'>
+      <div className='flex flex-col justify-between'>
+        <div className=''>
+          <h1 className='font-bold text-black mb-3'>{jetski?.name}</h1>
+          <div className='flex'>
+            <h1 className='font-semibold'>$</h1>
+            <h1 className='font-bold text-2xl'>{jetski?.price}</h1>
+            <h1 className='text-xs self-end'>/day</h1>
+          </div>
         </div>
-        <div className='mt-3'>
-          <h1 className='font-bold text-white'>{jetski?.name}</h1>
-          <h1 className='text-white'>${jetski.price}<span className='text-xs'>/day</span></h1>
-        </div>
+        <img src={urlFor(jetski.image && jetski.image[0])} className='rounded-t'/>
         <div>
-          {jetski?.available === 'true' ? (
-            <Link href={`/jetskis/${jetski?.slug.current}`}>
-              <button className='w-full bg-blue-700 text-white py-1 mt-3 rounded-b'>View</button>
-            </Link>
-          ) : (
-            <h1 className='w-full bg-slate-200 text-slate-700 font-bold text-center'>UNAVAILABLE</h1>
-          )}
+          <Link href={`/jetskis/${jetski?.slug.current}`}>
+            <button className='transition ease-in-out hover:bg-blue-600 hover:text-white bg-white border-blue-600 border-2 flex justify-center gap-6 items-center text-blue-600 w-full mb-3 rounded py-3 xl:py-2 font-bold'>Book Now <BsFillArrowRightCircleFill size={22}/> </button>
+          </Link>
         </div>
       </div>
     </div>

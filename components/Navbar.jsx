@@ -1,27 +1,22 @@
 import Link from 'next/link'
 import React from 'react'
 import { AiOutlineMenu } from 'react-icons/ai'
-import { BsCart2 } from 'react-icons/bs'
+import { BsCartFill } from 'react-icons/bs'
 
 const Navbar = () => {
   return (
-    <div className='fixed bg-[#333] w-full py-4 px-3 text-white z-50'>
-      <div className='flex items-center justify-between'>
+    <div className='fixed bg-[#ebebeb] w-full py-3 px-3 text-black z-50 lg:flex lg:justify-center'>
+      <div className='flex items-center justify-between lg:w-2/3'>
         <Link href='/'>
-          <h1 className='font-bold cursor-pointer'>LOGO HERE</h1>
+          <button className='font-bold cursor-pointer'>LOGO HERE</button>
         </Link>
-        <div className='flex gap-1 justify-center items-center'>
-          <div className='hidden md:flex'>
-            items here
-          </div>
-          <Link href='/'>
-            <button className='hover:bg-slate-800 p-1 rounded fill-slate-800'>
-              <BsCart2  size={21}/>
+        <div className='flex gap-3 justify-center items-center'>
+          <Link href='/cart'>
+            <button className='p-1 rounded flex gap-3'>
+              <h1 className='font-semibold'>Cart</h1>
+              <BsCartFill size={21}/>
             </button>
           </Link>
-          <button className='md:hidden hover:bg-slate-800 p-1 rounded fill-slate-800'>
-            <AiOutlineMenu size={21}/>
-          </button>
         </div>
       </div>
     </div>

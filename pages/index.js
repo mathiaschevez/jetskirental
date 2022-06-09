@@ -5,22 +5,23 @@ import { client } from '../lib/client'
 
 const Home = ({ jetskis, banners }) => {
   return (
-    <div className=''>
+    <div className='lg:flex lg:justify-center'>
       <Head>
         <title>Ski Rentals</title>
         <meta name="description" content="We offer top of the line ski rentals." />
         <link rel="icon" href="/favicon.ico" />
       </Head> 
-
-      <Header headerBanner={banners?.length && banners[0]} />
-      <div className='flex px-3 justify-between items-center'>
-        <h1 id='catalog' className='text-xl text-white font-bold my-3'>CATALOG</h1>
-        <button className='text-white hover:underline'>View all</button>
-      </div>
-      <div className='jetskis grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-3 px-3 gap-3'>
-        {jetskis.map((jetski) => (
-          <Jetski key={jetski._id} jetski={jetski} />
-        ))}
+      <div className='lg:w-2/3'>
+        {/* <Header headerBanner={banners?.length && banners[0]} /> */}
+        <div className='flex flex-col px-3 items-left'>
+          <h1 id='catalog' className='text-xl text-black font-bold mt-6 xl:text-3xl'>Jetski Catalog</h1>
+          <h1 className='mb-3 xl:text-xl'>Explore our catolog of jetskis</h1>
+        </div>
+        <div className='jetskis grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 mt-3 px-3 gap-3 mb-6'>
+          {jetskis.map((jetski) => (
+            <Jetski key={jetski._id} jetski={jetski} />
+          ))}
+        </div>
       </div>
     </div>
   )
