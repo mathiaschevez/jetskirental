@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { client, urlFor } from '../../lib/client'
 import { Jetski } from '../../components'
+import { useRouter } from 'next/router'
 import Calendar from 'react-calendar'
 import dayjs from 'dayjs'
 import { IoArrowBack, IoArrowForward } from 'react-icons/io5'
@@ -13,6 +14,7 @@ const JetskiDetail = ({ jetski, jetskis }) => {
   const [currentDate, setCurrentDate] = useState(new Date())
   const [viewOthers, setViewOthers ] = useState(false)
   const [daysSelected, setDaysSelected] = useState([])
+  const router = useRouter()
 
   const today = new Date()
   const maxDate = new Date(today)
@@ -37,6 +39,11 @@ const JetskiDetail = ({ jetski, jetskis }) => {
   const handleAdd = () => {
     onAdd(jetski, daysSelected)
     setDaysSelected([])
+  }
+
+  const handleBuyNow = () => {
+    onAdd(jetski, daysSelected)
+    router.push('/cart')
   }
 
   return (
@@ -86,7 +93,7 @@ const JetskiDetail = ({ jetski, jetskis }) => {
           {daysSelected[0] ? (
             <div className='flex gap-3 px-3 mt-12'>
               <button onClick={() => handleAdd()} className='transition ease-in-out w-1/2 border-2 border-blue-700 rounded font-bold text-blue-700 hover:bg-blue-600 hover:text-white'>Add to cart</button>
-              <button className='transition ease-in-out w-1/2 border-2 border-blue-700 rounded font-bold text-blue-700 hover:bg-blue-600 hover:text-white py-3'>Book Now</button>
+              <button onClick={() => handleBuyNow()} className='transition ease-in-out w-1/2 border-2 border-blue-700 rounded font-bold text-blue-700 hover:bg-blue-600 hover:text-white py-3'>Book Now</button>
             </div>
           ) : (
             <div className='flex gap-3 px-3 mt-12'>
