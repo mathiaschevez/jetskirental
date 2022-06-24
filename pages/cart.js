@@ -28,22 +28,22 @@ const Cart = () => {
       { cartItems[0] ? (
         <div className='flex flex-col gap-4'>
           {cartItems.map((item) => (
-            <div key={item._id} className='flex gap-3 p-3'>
+            <div key={item._id} className='flex justify-between gap-3 lg:gap-9 p-3'>
               <div className='w-1/2'>
                 <img src={urlFor(item?.image[0])} />
                 <h1 className='font-semibold lg:text-xl'>{item?.name}</h1>
               </div>
-              <div className='flex flex-col gap-1 justify-between'>
+              <div className='flex flex-col gap-1 justify-between w-1/2'>
                 <div>
-                  <h1 className='font-semibold md:text-xl lg:text-2xl'>{item?.days?.length} days scheduled</h1>
                   <div className='flex mt-6'>
                     <h1>$</h1>
-                    <h1 className='lg:text-xl font-semibold'>{item?.days.length * item?.price}</h1>
+                    <h1 className='font-semibold md:text-xl lg:text-2xl'>{item?.days.length * item?.price}</h1>
                   </div>
+                  <h1 className='font-semibold mt-3'>{item?.days?.length} days scheduled</h1>
                 </div>
-                <div className='grid grid-cols-2 gap-1'>
+                <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1'>
                   {item?.days?.map((day, i) => (
-                    <h1 key={i} className='border bg-[#ebebeb] border-slate-400 px-2 py-1 rounded text-sm self-center'>{dayjs(day).format('MMM-DD')}</h1>
+                    <h1 key={i} className='border bg-[#ebebeb] border-slate-400 px-2 py-1 rounded text-xs sm:text-sm self-center'>{dayjs(day).format('MMM-DD')}</h1>
                   ))}
                 </div>
               </div>
