@@ -14,7 +14,7 @@ const JetskiDetail = ({ jetski, jetskis }) => {
   const [currentDate, setCurrentDate] = useState(new Date())
   const [viewOthers, setViewOthers ] = useState(false)
   const [daysSelected, setDaysSelected] = useState([])
-  const [removing, setRemoving] = useState(false)
+  const [removing, setRemoving] = useState(-1)
   const router = useRouter()
 
   const today = new Date()
@@ -48,11 +48,11 @@ const JetskiDetail = ({ jetski, jetskis }) => {
   }
 
   return (
-    <div className='flex flex-col md:flex-row md:items-start lg:w-2/3 m-auto gap-6 justify-around items-center py-6'>
+    <div className='flex flex-col md:flex-row md:items-start lg:w-2/3 m-auto gap-6 justify-around items-center py-12 lg:py-16'>
       <div className='flex flex-col px-3 items-center md:items-start'>
         <h1 className='font-bold text-2xl'>Booking</h1>
         <h1 className='font-semibold mb-6'>Select days to book</h1>
-        <div className='flex justify-center items-center bg-[#ebebeb] sm:w-2/3 md:w-full lg:w-full xl:w-2/3'>
+        <div className='flex justify-center items-center sm:w-2/3 md:w-full lg:w-full xl:w-2/3'>
           <Calendar 
             className='rounded-xl' 
             value={currentDate} 
@@ -82,11 +82,11 @@ const JetskiDetail = ({ jetski, jetskis }) => {
             <h1 className='font-semibold mb-3'>Days selected</h1>
             <div className='grid grid-cols-2 gap-3'>
               {daysSelected?.map((day, i) => (
-                <div key={i} className={`${removing && 'border-red-600'} flex gap-3 bg-[#ebebeb] px-2 py-2 justify-between rounded border border-slate-400`}>
+                <div key={i} className={`${removing === i && 'border-red-600'} flex gap-3 bg-[#ebebeb] px-2 py-2 justify-between rounded border border-slate-400`}>
                   <h1 className='px-2'>{dayjs(day).format('MMM DD')}</h1>
                   <button 
-                    onMouseEnter={() => setRemoving(true)} 
-                    onMouseLeave={() => setRemoving(false)}
+                    onMouseEnter={() => setRemoving(i)} 
+                    onMouseLeave={() => setRemoving(-1)}
                     onClick={() => handleRemoveDay(dayjs(day).format('MMM DD'))}
                     className='text-red-600 px-2 rounded' 
                   >

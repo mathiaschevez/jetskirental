@@ -5,8 +5,7 @@ import { BsFillArrowRightCircleFill } from 'react-icons/bs'
 
 const Jetski = ({ jetski }) => {
   return (
-    <div className='bg-[white] p-3 rounded-2xl'>
-      <div className='flex flex-col justify-between'>
+    <div className='bg-[white] flex flex-col h-full p-3 rounded-2xl justify-between'>
         <div className=''>
           <h1 className='font-bold text-black mb-3'>{jetski?.name}</h1>
           <div className='flex'>
@@ -21,7 +20,6 @@ const Jetski = ({ jetski }) => {
             <button className='transition ease-in-out hover:bg-blue-600 hover:text-white bg-white border-blue-600 border-2 flex justify-center gap-6 items-center text-blue-600 w-full mb-3 rounded py-3 xl:py-2 font-bold'>Book Now <BsFillArrowRightCircleFill size={22}/> </button>
           </Link>
         </div>
-      </div>
     </div>
   )
 }

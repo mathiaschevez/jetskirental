@@ -11,13 +11,12 @@ const Home = ({ jetskis, banners }) => {
         <meta name="description" content="We offer top of the line ski rentals." />
         <link rel="icon" href="/favicon.ico" />
       </Head> 
-      <div className='lg:w-2/3'>
+      <div className='lg:w-2/3 pt-6 md:pt-12'>
         {/* <Header headerBanner={banners?.length && banners[0]} /> */}
         <div className='flex flex-col px-3 items-left'>
-          <h1 id='catalog' className='text-xl text-black font-bold mt-6 xl:text-3xl'>Jetski Catalog</h1>
-          <h1 className='mb-3 xl:text-xl'>Explore our catolog of jetskis</h1>
+          <h1 id='catalog' className='text-2xl text-black font-bold mt-6 md:text-3xl xl:text-4xl xl:text-left text-center'>Jetski Catalog</h1>
         </div>
-        <div className='jetskis grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 mt-3 px-3 gap-3 mb-6'>
+        <div className='jetskis grid grid-cols-1 md:grid-cols-3 mt-3 px-3 xl:px-0 gap-3 mb-6'>
           {jetskis.map((jetski) => (
             <Jetski key={jetski._id} jetski={jetski} />
           ))}
