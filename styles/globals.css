@@ -109,8 +109,8 @@ body {
 }
 .react-calendar__tile:enabled:hover,
 .react-calendar__tile:enabled:focus {
-  background-color: #76baff;
-  color: white;
+  /* background-color: #76baff;
+  color: white; */
 }
 .react-calendar__tile--now {
   background-color: #ebebeb;

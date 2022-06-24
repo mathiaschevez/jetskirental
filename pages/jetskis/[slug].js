@@ -14,6 +14,7 @@ const JetskiDetail = ({ jetski, jetskis }) => {
   const [currentDate, setCurrentDate] = useState(new Date())
   const [viewOthers, setViewOthers ] = useState(false)
   const [daysSelected, setDaysSelected] = useState([])
+  const [removing, setRemoving] = useState(false)
   const router = useRouter()
 
   const today = new Date()
@@ -81,9 +82,16 @@ const JetskiDetail = ({ jetski, jetskis }) => {
             <h1 className='font-semibold mb-3'>Days selected</h1>
             <div className='grid grid-cols-2 gap-3'>
               {daysSelected?.map((day, i) => (
-                <div key={i} className='flex gap-3 bg-[#ebebeb] px-2 py-2 justify-between rounded border border-slate-400'>
+                <div key={i} className={`${removing && 'border-red-600'} flex gap-3 bg-[#ebebeb] px-2 py-2 justify-between rounded border border-slate-400`}>
                   <h1 className='px-2'>{dayjs(day).format('MMM DD')}</h1>
-                  <button className='text-blue-600 px-2 rounded' onClick={() => handleRemoveDay(dayjs(day).format('MMM DD'))}><AiOutlineCloseCircle size={24}/> </button>
+                  <button 
+                    onMouseEnter={() => setRemoving(true)} 
+                    onMouseLeave={() => setRemoving(false)}
+                    onClick={() => handleRemoveDay(dayjs(day).format('MMM DD'))}
+                    className='text-red-600 px-2 rounded' 
+                  >
+                    <AiOutlineCloseCircle size={24}/>
+                  </button>
                 </div>
               ))}
             </div>
