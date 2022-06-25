@@ -51,7 +51,7 @@ const Cart = () => {
           ))}
           <div className='flex gap-3 mt-9'>
             <button className='transition ease-in-out hover:bg-red-600 hover:text-white font-semibold text-red-600 border-2 border-red-600 w-1/2 rounded py-3' onClick={() => clearCart()}>Clear</button>
-            <button className='transition ease-in-out hover:bg-blue-600 hover:text-white font-semibold text-blue-600 border-2 border-blue-600 w-1/2 rounded py-3' onClick={handleCheckout}>Payment</button>
+            <button className='transition ease-in-out hover:bg-[#00A7C3] hover:text-white font-semibold text-[#00A7C3] border-2 border-[#00A7C3] w-1/2 rounded py-3' onClick={handleCheckout}>Payment</button>
           </div>
         </div>
       ) : (

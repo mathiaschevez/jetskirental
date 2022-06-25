@@ -22,6 +22,12 @@ const JetskiDetail = ({ jetski, jetskis }) => {
   maxDate.setMonth(maxDate.getMonth() + 2)
 
   useEffect(() => {
+    if(!daysSelected.length > 0) {
+      setRemoving(-1)
+    }
+  }, [daysSelected])
+
+  useEffect(() => {
     handleSetDays()
   }, [currentDate])
   
@@ -100,8 +106,8 @@ const JetskiDetail = ({ jetski, jetskis }) => {
         <div className=''>
           {daysSelected[0] ? (
             <div className='flex gap-3 px-3 mt-12'>
-              <button onClick={() => handleAdd()} className='transition ease-in-out w-1/2 border-2 border-blue-700 rounded font-bold text-blue-700 hover:bg-blue-600 hover:text-white'>Add to cart</button>
-              <button onClick={() => handleBuyNow()} className='transition ease-in-out w-1/2 border-2 border-blue-700 rounded font-bold text-blue-700 hover:bg-blue-600 hover:text-white py-3'>Book Now</button>
+              <button onClick={() => handleAdd()} className='transition ease-in-out w-1/2 border-2 border-[#00A7C3] rounded font-bold text-[#00A7C3] hover:bg-[#00A7C3] hover:text-white'>Add to cart</button>
+              <button onClick={() => handleBuyNow()} className='transition ease-in-out w-1/2 border-2 border-[#00A7C3] rounded font-bold text-[#00A7C3] hover:bg-[#00A7C3] hover:text-white py-3'>Book Now</button>
             </div>
           ) : (
             <div className='flex gap-3 px-3 mt-12'>
