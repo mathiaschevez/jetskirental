@@ -21,6 +21,7 @@ const JetskiDetail = ({ jetski, jetskis }) => {
   const maxDate = new Date(today)
   maxDate.setMonth(maxDate.getMonth() + 2)
 
+
   useEffect(() => {
     if(!daysSelected.length > 0) {
       setRemoving(-1)
@@ -53,19 +54,25 @@ const JetskiDetail = ({ jetski, jetskis }) => {
     router.push('/cart')
   }
 
+  const handleDisableDates = ({ date }) => {
+    console.log(date)
+
+    return (jetski?.bookings?.includes(dayjs(date).format('YYYY-MM-DD'))) || (dayjs(date).format('ddd') === 'Sun')
+  }
+
   return (
     <div className='flex flex-col md:flex-row md:items-start lg:w-2/3 m-auto gap-6 justify-around items-center py-12 lg:py-16'>
       <div className='flex flex-col px-3 items-center md:items-start'>
         <h1 className='font-bold text-2xl'>Booking</h1>
         <h1 className='font-semibold mb-6'>Select days to book</h1>
-        <div className='flex justify-center items-center sm:w-2/3 md:w-full lg:w-full xl:w-2/3'>
+        <div className='flex justify-center items-center sm:w-2/3 md:w-full lg:w-full xl:w-full'>
           <Calendar 
             className='rounded-xl' 
             value={currentDate} 
             onChange={setCurrentDate}
             next2Label={null}
             prev2Label={null}
-            tileDisabled={({ date }) => (jetski?.bookings?.includes(dayjs(date).format('YYYY-MM-DD'))) || (dayjs(date).format('ddd') === 'Sun')}
+            tileDisabled={({ date }) => handleDisableDates({ date})}
             minDate={today}
             maxDate={maxDate}
             prevLabel={(<IoArrowBack size={22}/>)}
@@ -74,7 +81,9 @@ const JetskiDetail = ({ jetski, jetskis }) => {
         </div>
       </div>
       <div>
-        <img src={urlFor(jetski.image[0])} height={250} />
+        <div className='px-3'>
+          <img src={urlFor(jetski.image[0])} className='rounded m-auto'/>
+        </div>
         <div className='px-3 flex justify-between items-center mt-3'>
           <h1 className='text-black font-bold text-2xl'>{jetski?.name}</h1>
           <div className='flex'>

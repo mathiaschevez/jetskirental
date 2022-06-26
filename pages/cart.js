@@ -28,10 +28,10 @@ const Cart = () => {
       { cartItems[0] ? (
         <div className='flex flex-col gap-4'>
           {cartItems.map((item) => (
-            <div key={item._id} className='flex justify-between gap-3 lg:gap-9 p-3'>
+            <div key={item._id} className='flex justify-between gap-3 lg:gap-9 py-3'>
               <div className='w-1/2'>
-                <img src={urlFor(item?.image[0])} />
-                <h1 className='font-semibold lg:text-xl'>{item?.name}</h1>
+                <img src={urlFor(item?.image[0])} className='rounded mb-6' />
+                <h1 className='font-semibold lg:text-2xl'>{item?.name}</h1>
               </div>
               <div className='flex flex-col gap-1 justify-between w-1/2'>
                 <div>
