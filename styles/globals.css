@@ -39,7 +39,7 @@ body {
   margin: 0;
   border: 0;
   outline: none;
-  border-radius: 50%;
+  border-radius: 5px;
 }
 .react-calendar button:enabled:hover {
   cursor: pointer;
