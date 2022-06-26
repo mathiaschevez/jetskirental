@@ -8,10 +8,10 @@ const Jetski = ({ jetski }) => {
     <div className='bg-[white] flex flex-col gap-3 h-full p-3 rounded-2xl justify-between'>
         <img src={urlFor(jetski.image && jetski.image[0])} className='rounded'/>
         <div className='flex justify-between'>
-          <h1 className='font-bold text-black mb-3'>{jetski?.name}</h1>
+          <h1 className='font-bold text-black mb-3 text-2xl md:text-lg lg:text-md xl:text-xl'>{jetski?.name}</h1>
           <div className='flex'>
             <h1 className='font-semibold'>$</h1>
-            <h1 className='font-bold text-2xl'>{jetski?.price}</h1>
+            <h1 className='font-bold text-2xl md:text-lg xl:text-2xl'>{jetski?.price}</h1>
             <h1 className='text-xs self-center ml-1'>/day</h1>
           </div>
         </div>
