@@ -55,7 +55,6 @@ const JetskiDetail = ({ jetski, jetskis }) => {
     const daysInDb = jetski?.bookings?.filter((day) => {
       return dayjs(day).format('YYYY-MM-DD') === dayjs(date).format('YYYY-MM-DD')
     })
-    console.log(daysInDb)
 
     return (daysInDb?.length === jetski?.quantity) || (dayjs(date).format('ddd') === 'Sun')
   }
