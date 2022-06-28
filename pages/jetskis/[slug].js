@@ -65,6 +65,22 @@ const JetskiDetail = ({ jetski, jetskis }) => {
         <h1 className='text-2xl font-semibold'>Booking</h1>
         <h1>Select days to book</h1>
       </div>
+      <div className='lg:hidden flex flex-col px-3 items-center md:items-start mb-9'>
+        <div className='flex justify-center items-center sm:w-2/3 lg:w-full xl:w-full m-auto'>
+          <Calendar 
+            className='rounded-xl' 
+            value={currentDate} 
+            onChange={setCurrentDate}
+            next2Label={null}
+            prev2Label={null}
+            tileDisabled={({ date }) => handleDisableDates({ date})}
+            minDate={today}
+            maxDate={maxDate}
+            prevLabel={(<IoArrowBack size={22}/>)}
+            nextLabel={(<IoArrowForward size={22}/>)}
+          />
+        </div>
+      </div>
       <div className='flex flex-col md:flex-row md:items-start gap-6 justify-around items-center '>
         <div className='w-full'>
           <div className='px-3'>
@@ -128,7 +144,7 @@ const JetskiDetail = ({ jetski, jetskis }) => {
             }
           </div>
         </div>
-        <div className='flex flex-col px-3 items-center md:items-start'>
+        <div className='hidden lg:flex flex-col px-3 items-center md:items-start'>
           <div className='flex justify-center items-center sm:w-2/3 md:w-full lg:w-full xl:w-full'>
             <Calendar 
               className='rounded-xl' 
