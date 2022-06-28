@@ -14,7 +14,7 @@ const Navbar = () => {
             <Image src={logo} alt='logo' width={180} height={69} objectFit='contain'/>
           </button>
         </Link>
-        <div className='flex gap-6 justify-center items-center'>
+        <div className='flex gap-3 lg:gap-6 justify-center items-center'>
           <Link href='/calendar'>
             <button className='p-1 rounded flex gap-3'>
               <h1 className='font-bold italic'>CALENDAR</h1>
