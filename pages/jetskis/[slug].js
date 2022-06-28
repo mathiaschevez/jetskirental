@@ -10,10 +10,8 @@ import { useStateContext } from '../../context/StateContext'
 import toast from 'react-hot-toast'
 
 const JetskiDetail = ({ jetski, jetskis }) => {
-  const { onAdd } = useStateContext()
+  const { onAdd, daysSelected, setDaysSelected, viewOthers, setViewOthers } = useStateContext()
   const [currentDate, setCurrentDate] = useState(new Date())
-  const [viewOthers, setViewOthers ] = useState(false)
-  const [daysSelected, setDaysSelected] = useState([])
   const [removing, setRemoving] = useState(-1)
   const router = useRouter()
 
@@ -69,22 +67,6 @@ const JetskiDetail = ({ jetski, jetskis }) => {
         <h1>Select days to book</h1>
       </div>
       <div className='flex flex-col md:flex-row md:items-start gap-6 justify-around items-center '>
-        <div className='flex flex-col px-3 items-center md:items-start'>
-          <div className='flex justify-center items-center sm:w-2/3 md:w-full lg:w-full xl:w-full'>
-            <Calendar 
-              className='rounded-xl' 
-              value={currentDate} 
-              onChange={setCurrentDate}
-              next2Label={null}
-              prev2Label={null}
-              tileDisabled={({ date }) => handleDisableDates({ date})}
-              minDate={today}
-              maxDate={maxDate}
-              prevLabel={(<IoArrowBack size={22}/>)}
-              nextLabel={(<IoArrowForward size={22}/>)}
-            />
-          </div>
-        </div>
         <div className='w-full'>
           <div className='px-3'>
             <img src={urlFor(jetski.image[0])} className='rounded m-auto'/>
@@ -145,6 +127,22 @@ const JetskiDetail = ({ jetski, jetskis }) => {
                 </div>
               </div>
             }
+          </div>
+        </div>
+        <div className='flex flex-col px-3 items-center md:items-start'>
+          <div className='flex justify-center items-center sm:w-2/3 md:w-full lg:w-full xl:w-full'>
+            <Calendar 
+              className='rounded-xl' 
+              value={currentDate} 
+              onChange={setCurrentDate}
+              next2Label={null}
+              prev2Label={null}
+              tileDisabled={({ date }) => handleDisableDates({ date})}
+              minDate={today}
+              maxDate={maxDate}
+              prevLabel={(<IoArrowBack size={22}/>)}
+              nextLabel={(<IoArrowForward size={22}/>)}
+            />
           </div>
         </div>
       </div>

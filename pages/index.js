@@ -3,16 +3,16 @@ import Head from 'next/head'
 import { Header, Jetski } from '../components'
 import { client } from '../lib/client'
 
-const Home = ({ jetskis, banners }) => {
+const Home = ({ jetskis }) => {
   return (
-    <div className='lg:flex lg:justify-center'>
+    <div className='flex flex-col lg:justify-center'>
       <Head>
         <title>Ski Rentals</title>
         <meta name="description" content="We offer top of the line ski rentals." />
         <link rel="icon" href="/favicon.ico" />
       </Head> 
-      <div className='lg:w-2/3 pt-6 md:pt-12'>
-        {/* <Header headerBanner={banners?.length && banners[0]} /> */}
+      <Header />
+      <div className='lg:w-2/3 pt-6 md:pt-12 m-auto'>
         <div className='flex flex-col px-3 items-left'>
           <h1 id='catalog' className='text-2xl text-black font-bold mt-6 md:text-3xl xl:text-4xl xl:text-left text-center'>Jetski Catalog</h1>
         </div>
@@ -28,12 +28,10 @@ const Home = ({ jetskis, banners }) => {
 
 export const getServerSideProps = async () => {
   const query = '*[_type == "jetski"]'
-  const bannerQuery = '*[_type == "banner"]'
   
   const jetskis = await client.fetch(query)
-  const banners = await client.fetch(bannerQuery)
   return {
-    props: { jetskis, banners }
+    props: { jetskis }
   }
 }
 

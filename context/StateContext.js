@@ -9,6 +9,8 @@ const Context = createContext()
 export const StateContext = ({children}) => {
   const [cartItems, setCartItems] = useState([])
   const [isAdding, setIsAdding] = useState(false)
+  const [daysSelected, setDaysSelected] = useState([])
+  const [viewOthers, setViewOthers ] = useState(false)
 
   useEffect(() => {
     checkForCart()
@@ -114,6 +116,10 @@ export const StateContext = ({children}) => {
         setIsAdding,
         updateJetski,
         handleCheckout,
+        daysSelected,
+        setDaysSelected,
+        viewOthers,
+        setViewOthers,
       }}
     >
       {children}

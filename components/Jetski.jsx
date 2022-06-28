@@ -2,8 +2,16 @@ import React from 'react'
 import Link from 'next/link'
 import { urlFor } from '../lib/client'
 import { BsFillArrowRightCircleFill } from 'react-icons/bs'
+import { useStateContext } from '../context/StateContext'
 
 const Jetski = ({ jetski }) => {
+  const { setDaysSelected, setViewOthers } = useStateContext()
+
+  const handleJetskiSwitch = () => {
+    setDaysSelected([])
+    setViewOthers(false)
+  }
+
   return (
     <div className='bg-[white] flex flex-col gap-3 h-full p-3 rounded-2xl justify-between'>
         <img src={urlFor(jetski.image && jetski.image[0])} className='rounded'/>
@@ -17,7 +25,7 @@ const Jetski = ({ jetski }) => {
         </div>
         <div>
           <Link href={`/jetskis/${jetski?.slug.current}`}>
-            <button className='transition ease-in-out hover:bg-[#00A7C3] hover:text-white bg-white border-[#00A7C3] border-2 flex justify-center gap-6 items-center text-[#00A7C3] w-full mb-3 rounded py-3 xl:py-2 font-bold'>Book Now <BsFillArrowRightCircleFill size={22}/> </button>
+            <button onClick={() => handleJetskiSwitch()} className='transition ease-in-out hover:bg-[#00A7C3] hover:text-white bg-white border-[#00A7C3] border-2 flex justify-center gap-6 items-center text-[#00A7C3] w-full mb-3 rounded py-3 xl:py-2 font-bold'>Book Now <BsFillArrowRightCircleFill size={22}/> </button>
           </Link>
         </div>
     </div>

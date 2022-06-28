@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { AiOutlineMenu } from 'react-icons/ai'
+import { AiFillCalendar } from 'react-icons/ai'
 import { BsCartFill } from 'react-icons/bs'
 import secondaryLogo from '../assets/LOGOS_PRIMARY-BLACK.png'
 
@@ -12,7 +12,13 @@ const Navbar = () => {
         <Link href='/'>
           <Image className='cursor-pointer' src={secondaryLogo} alt='logo' width={180} height={69} objectFit='contain'/>
         </Link>
-        <div className='flex gap-3 justify-center items-center'>
+        <div className='flex gap-6 justify-center items-center'>
+          <Link href='/calendar'>
+            <button className='p-1 rounded flex gap-3'>
+              <h1 className='font-bold italic'>CALENDAR</h1>
+              <AiFillCalendar size={21}/>
+            </button>
+          </Link>
           <Link href='/cart'>
             <button className='p-1 rounded flex gap-3'>
               <h1 className='font-bold italic'>CART</h1>
