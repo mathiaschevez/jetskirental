@@ -44,7 +44,7 @@ const CalendarPage = ({ jetskis }) => {
       </div>
       <div>
         {jetskis?.map((jetski) => (
-          <h1>{jetski.name}</h1>
+          <h1 key={jetski._id}>{jetski.name}</h1>
         ))}
       </div>
     </div>
