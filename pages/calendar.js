@@ -21,12 +21,12 @@ const CalendarPage = ({ jetskis }) => {
   }, [currentDate])
 
   return (
-    <div className='pt-20 lg:w-2/3 m-auto pb-10'>
-      <div className='flex flex-col mb-6'>
-        <h1 className='font-bold text-2xl'>Calendar</h1>
-        <h1>Select day to see available jetskis</h1>
+    <div className='py-12 lg:py-16 lg:w-2/3 m-auto'>
+      <div className='px-3 mb-6'>
+        <h1 className='text-2xl font-semibold'>Calendar</h1>
+        <h1>Select days view available jetskis</h1>
       </div>
-      <div className='flex flex-col items-center md:items-start'>
+      <div className='flex flex-col items-center md:items-start px-3'>
         <div className='flex sm:w-2/3 md:w-full lg:w-2/3 m-auto'>
           <Calendar 
             className='rounded-xl' 
@@ -42,7 +42,7 @@ const CalendarPage = ({ jetskis }) => {
           />
         </div>
       </div>
-      <div>
+      <div className='mt-6 px-3'>
         {jetskis?.map((jetski) => (
           <h1 key={jetski._id}>{jetski.name}</h1>
         ))}
