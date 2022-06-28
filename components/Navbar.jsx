@@ -14,15 +14,15 @@ const Navbar = () => {
             <Image src={logo} alt='logo' width={180} height={69} objectFit='contain'/>
           </button>
         </Link>
-        <div className='flex gap-3 lg:gap-6 justify-center items-center'>
+        <div className='flex gap-1 lg:gap-6 justify-center items-center'>
           <Link href='/calendar'>
-            <button className='p-1 rounded flex gap-3'>
+            <button className='p-1 rounded flex gap-2 items-center'>
               <h1 className='font-bold italic text-sm md:text-base'>CALENDAR</h1>
               <AiFillCalendar size={21}/>
             </button>
           </Link>
           <Link href='/cart'>
-            <button className='p-1 rounded flex gap-3'>
+            <button className='p-1 rounded flex gap-2 items-center'>
               <h1 className='font-bold italic text-sm md:text-base'>CART</h1>
               <BsCartFill size={21}/>
             </button>
