@@ -19,7 +19,7 @@ const Jetski = ({ jetski }) => {
           <h1 className='font-bold text-black mb-3 text-2xl md:text-lg lg:text-md xl:text-xl'>{jetski?.name}</h1>
           <div className='flex'>
             <h1 className='font-semibold'>$</h1>
-            <h1 className='font-bold text-2xl md:text-lg xl:text-2xl'>{jetski?.price}</h1>
+            <h1 className='font-bold text-2xl md:text-lg xl:text-xl'>{jetski?.price}</h1>
             <h1 className='text-xs self-center ml-1'>/day</h1>
           </div>
         </div>
