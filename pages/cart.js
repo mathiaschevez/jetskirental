@@ -8,6 +8,8 @@ import Link from 'next/link'
 const Cart = () => {
   const { cartItems, clearCart, handleCheckout} = useStateContext()
 
+  console.log(cartItems)
+
   // useEffect(() => {
     
   // }, [cartItems])
