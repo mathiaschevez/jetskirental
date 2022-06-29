@@ -18,34 +18,36 @@ const Cart = () => {
   )
 
   return (
-    <div className='px-3 lg:w-2/3 flex justify-center flex-col items-center m-auto py-6'>
+    <div className='px-3 xl:w-2/3 flex justify-center flex-col items-center m-auto py-6'>
       <h1 className='text-2xl font-bold py-1 lg:py-3 mt-3 w-full lg:text-3xl'>Cart Items</h1>
       <h1 className='w-full mb-3'>Total calculated at payment</h1>
       { cartItems[0] ? (
-        <div className='flex flex-col gap-4'>
-          {cartItems.map((item) => (
-            <div key={item._id} className='flex justify-between gap-3 lg:gap-9 py-3'>
-              <div className='w-1/2'>
-                <img src={urlFor(item?.image[0])} className='rounded mb-6' />
-                <h1 className='font-semibold lg:text-2xl'>{item?.name}</h1>
-              </div>
-              <div className='flex flex-col gap-1 justify-between w-1/2'>
-                <div>
-                  <div className='flex mt-6'>
-                    <h1>$</h1>
-                    <h1 className='font-semibold md:text-xl lg:text-2xl'>{item?.days.length * item?.price}</h1>
+        <div>
+          <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 m-auto md:gap-9 xl:m-0'>
+            {cartItems.map((item) => (
+              <div key={item._id} className='flex justify-between gap-3 lg:gap-9 py-3'>
+                <div className='w-1/2'>
+                  <img src={urlFor(item?.image[0])} className='rounded mb-6' />
+                  <h1 className='font-semibold lg:text-2xl'>{item?.name}</h1>
+                </div>
+                <div className='flex flex-col gap-1 justify-between w-1/2'>
+                  <div>
+                    <div className='flex mt-6'>
+                      <h1 className='lg:text-lg font-semibold'>$</h1>
+                      <h1 className='font-semibold md:text-xl lg:text-2xl xl:text-3xl'>{item?.days.length * item?.price}</h1>
+                    </div>
+                    <h1 className='font-semibold mt-3 xl:text-lg'>{item?.days?.length} days scheduled</h1>
                   </div>
-                  <h1 className='font-semibold mt-3'>{item?.days?.length} days scheduled</h1>
-                </div>
-                <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1'>
-                  {item?.days?.map((day, i) => (
-                    <h1 key={i} className='border bg-[#ebebeb] border-slate-400 px-2 py-1 rounded text-xs sm:text-sm self-center'>{dayjs(day).format('MMM-DD')}</h1>
-                  ))}
+                  <div className='grid grid-cols-2 md:grid-cols-2 gap-1'>
+                    {item?.days?.map((day, i) => (
+                      <h1 key={i} className='border bg-[#ebebeb] border-slate-400 px-2 py-1 rounded text-xs sm:text-sm self-center xl:py-2 xl:px-3 xl:text-base'>{dayjs(day).format('MMM-DD')}</h1>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-          <div className='flex gap-3 mt-9'>
+            ))}
+          </div>
+          <div className='flex gap-3 mt-9 lg:w-full xl:w-2/3 xl:gap-6'>
             <button className='transition ease-in-out hover:bg-red-600 hover:text-white font-semibold text-red-600 border-2 border-red-600 w-1/2 rounded py-3' onClick={() => clearCart()}>Clear</button>
             <button className='transition ease-in-out hover:bg-[#00A7C3] hover:text-white font-semibold text-[#00A7C3] border-2 border-[#00A7C3] w-1/2 rounded py-3' onClick={handleCheckout}>Payment</button>
           </div>

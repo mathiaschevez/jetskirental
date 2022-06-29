@@ -103,7 +103,7 @@ body {
   padding: 4px;
   background: none;
   text-align: center;
-  line-height: 32px;
+  line-height: 38px;
 }
 .react-calendar__tile:disabled {
   color: lightgray;
@@ -141,6 +141,8 @@ body {
   background-color: #ebebeb;
 }
 
-@media screen and (max-width: 1024px) {
-  
+@media screen and (max-width: 430px) {
+  .react-calendar__tile {
+    line-height: 27px;
+  }
 }

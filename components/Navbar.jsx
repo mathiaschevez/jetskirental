@@ -8,7 +8,7 @@ import logo from '../assets/LOGOS_PRIMARY-BLACK.png'
 const Navbar = () => {
   return (
     <div className='fixed bg-[#ebebeb] w-full py-1 px-3 text-black z-50 lg:flex lg:justify-center'>
-      <div className='flex items-center justify-between lg:w-2/3'>
+      <div className='flex items-center justify-between w-full xl:w-2/3'>
         <Link href='/'>
           <button>
             <Image src={logo} alt='logo' width={180} height={69} objectFit='contain'/>
