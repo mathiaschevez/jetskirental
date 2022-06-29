@@ -9,7 +9,7 @@ import { client, urlFor } from '../lib/client'
 const CalendarPage = ({ jetskis }) => {
   const { cartItems, onAdd, setDaysSelected, daysSelected } = useStateContext() 
   const [currentDate, setCurrentDate] = useState(new Date())
-  const [availableJetskis, setAvailableJetskis] = useState([])
+  const [jetskisToShow, setJetskisToShow] = useState([])
 
   const today = new Date()
   const maxDate = new Date(today)
@@ -17,7 +17,7 @@ const CalendarPage = ({ jetskis }) => {
 
   useEffect(() => {
     findAvailableJetskis()
-    setDaysSelected([currentDate])
+    setDaysSelected([dayjs(currentDate).format('YYYY-MM-DD')])
   }, [currentDate])
 
   const findAvailableJetskis = () => {
@@ -31,13 +31,15 @@ const CalendarPage = ({ jetskis }) => {
       }
     })
 
-    let jetskisNotAlreadySelected = availableJetkis.filter((jetski) => {
-      return cartItems.map((item) => {
-        return !item.days.includes(dayjs(currentDate).format('YYYY-MM-DD'))
-      })
+    let jetskisNotSelected = availableJetkis.filter((jetski) => {
+      return cartItems.filter((item) => {
+        return item._id === jetski._id && item.days.includes(dayjs(currentDate).format('YYYY-MM-DD'))
+      }).length !== jetski.quantity
     })
 
-    setAvailableJetskis(jetskisNotAlreadySelected)
+    console.log(jetskisNotSelected)
+
+    setJetskisToShow(jetskisNotSelected)
   }
 
   const handleAdd = (jetski) => {
@@ -74,7 +76,7 @@ const CalendarPage = ({ jetskis }) => {
             onChange={setCurrentDate}
             next2Label={null}
             prev2Label={null}
-            // tileDisabled={({ date }) => handleDisableDates({ date})}
+            // tileDisabled={({ date }) => handleDisableDates({ date })}
             minDate={today}
             maxDate={maxDate}
             prevLabel={(<IoArrowBack size={22}/>)}
@@ -83,12 +85,19 @@ const CalendarPage = ({ jetskis }) => {
         </div>
       </div>
       <div className='mt-6 px-3'>
-        <h1 className='text-xl font-semibold mb-3'>Available jetskis</h1>
+        <h1 className='text-xl font-semibold mb-6'>Available jetskis</h1>
         <div className='flex flex-col gap-9'>
-          {availableJetskis?.map((jetski) => (
+          {jetskisToShow?.map((jetski) => (
             <div className='flex flex-col' key={jetski._id}>
               <img src={urlFor(jetski.image[0])} className='rounded m-auto'/>
-              <h1 className=''>{jetski.name}</h1>
+              <div className='flex justify-between items-center my-3'>
+                <h1 className='font-bold text-lg'>{jetski.name}</h1>
+                <div className='flex'>
+                  <h1 className='font-semibold'>$</h1>
+                  <h1 className='font-bold text-2xl'>{jetski?.price}</h1>
+                  <h1 className='text-xs self-center ml-1'>/day</h1>
+                </div>
+              </div>
               <div className='flex w-full gap-3 mt-3'>
                 <button onClick={() => handleAdd(jetski)} className='transition ease-in-out w-1/2 border-2 border-[#00A7C3] rounded font-bold text-[#00A7C3] hover:bg-[#00A7C3] hover:text-white'>Add to cart</button>
                 <button onClick={() => handleBuyNow(jetski)} className='transition ease-in-out w-1/2 border-2 border-[#00A7C3] rounded font-bold text-[#00A7C3] hover:bg-[#00A7C3] hover:text-white py-3'>Book Now</button>
