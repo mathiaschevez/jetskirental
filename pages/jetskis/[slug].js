@@ -119,7 +119,7 @@ const JetskiDetail = ({ jetski, jetskis }) => {
               </div>
             </div>
           )}
-          <div className=''>
+          <div>
             {daysSelected[0] ? (
               <div className='flex flex-col px-3 gap-6'>
                 <div className='flex gap-3 mt-12'>
@@ -169,7 +169,6 @@ const JetskiDetail = ({ jetski, jetskis }) => {
         </div>
       </div>
       <div className='mt-6 px-3 mb-6'>
-        
         {viewOthers &&
           <div className='mt-3'>
             <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-1'>

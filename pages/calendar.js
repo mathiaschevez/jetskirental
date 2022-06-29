@@ -11,7 +11,6 @@ const CalendarPage = ({ jetskis }) => {
   const { cartItems, onAdd, setDaysSelected, daysSelected } = useStateContext() 
   const [currentDate, setCurrentDate] = useState(new Date())
   const [jetskisToShow, setJetskisToShow] = useState([])
-
   const router = useRouter()
 
   const today = new Date()
@@ -77,7 +76,6 @@ const CalendarPage = ({ jetskis }) => {
             onChange={setCurrentDate}
             next2Label={null}
             prev2Label={null}
-            // tileDisabled={({ date }) => handleDisableDates({ date })}
             minDate={today}
             maxDate={maxDate}
             prevLabel={(<IoArrowBack size={22}/>)}

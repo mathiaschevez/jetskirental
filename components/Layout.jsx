@@ -2,7 +2,6 @@ import React, { useState, useEffect} from 'react'
 import Head from 'next/head'
 import Navbar from './Navbar'
 import Footer from './Footer'
-
 import { useRouter } from 'next/router'
 
 const Layout = ({ children }) => {
@@ -14,8 +13,6 @@ const Layout = ({ children }) => {
     if(router.pathname !== '/success') { setLayoutHidden(false) }
   }, [router.pathname])
   
-
-
   return (
     <div className='layout h-full w-full'>
       <Head>

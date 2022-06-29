@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { urlFor } from '../lib/client'
 import dayjs from 'dayjs'
-import toast from 'react-hot-toast'
 import { useStateContext } from '../context/StateContext'
 import Link from 'next/link'
 
@@ -10,9 +9,9 @@ const Cart = () => {
 
   if(cartItems.length === 0) return (
     <div className='py-12 flex flex-col gap-9 items-center lg:w-2/3 m-auto'>
-      <h1 className='text-xl font-semibold'>NO JETSKIS SCHEDULED</h1>
+      <h1 className='text-xl font-semibold mt-3'>NO JETSKIS SCHEDULED</h1>
       <Link href='/'>
-        <button className='bg-black text-white rounded px-3 py-2'>Back to Home</button>
+        <button className='transition ease-in-out border border-black hover:bg-black hover:text-white text-black font-semibold rounded px-9 py-3'>Back to Home</button>
       </Link>
     </div>
   )
