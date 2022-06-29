@@ -94,7 +94,7 @@ const CalendarPage = ({ jetskis }) => {
                   <h1 className='font-bold text-lg'>{jetski.name}</h1>
                   <div className='flex'>
                     <h1 className='font-semibold'>$</h1>
-                    <h1 className='font-bold text-2xl'>{jetski?.price}</h1>
+                    <h1 className='font-bold text-xl'>{jetski?.price}</h1>
                     <h1 className='text-xs self-center ml-1'>/day</h1>
                   </div>
                 </div>
