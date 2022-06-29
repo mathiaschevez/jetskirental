@@ -10,7 +10,7 @@ import { useStateContext } from '../../context/StateContext'
 import toast from 'react-hot-toast'
 
 const JetskiDetail = ({ jetski, jetskis }) => {
-  const { onAdd, daysSelected, setDaysSelected, viewOthers, setViewOthers } = useStateContext()
+  const { cartItems, onAdd, daysSelected, setDaysSelected, viewOthers, setViewOthers } = useStateContext()
   const [currentDate, setCurrentDate] = useState(new Date())
   const [removing, setRemoving] = useState(-1)
   const router = useRouter()
@@ -43,6 +43,7 @@ const JetskiDetail = ({ jetski, jetskis }) => {
 
   const handleAdd = () => {
     onAdd(jetski, daysSelected)
+    setCurrentDate(new Date())
     setDaysSelected([])
   }
 
@@ -56,8 +57,16 @@ const JetskiDetail = ({ jetski, jetskis }) => {
       return dayjs(day).format('YYYY-MM-DD') === dayjs(date).format('YYYY-MM-DD')
     })
 
-    return (daysInDb?.length === jetski?.quantity) || (dayjs(date).format('ddd') === 'Sun')
+    const daysInCart = cartItems?.filter((item) => {
+      return jetski._id === item._id && item?.days.includes(dayjs(date).format('YYYY-MM-DD'))
+    })
+
+    console.log(daysInCart)
+
+    return (daysInCart.length === 1) ||  (daysInDb?.length === jetski?.quantity) || (dayjs(date).format('ddd') === 'Sun')
   }
+
+  // console.log(cartItems)
 
   return (
     <div className='py-12 lg:py-16 lg:w-2/3 m-auto'>
@@ -73,7 +82,7 @@ const JetskiDetail = ({ jetski, jetskis }) => {
             onChange={setCurrentDate}
             next2Label={null}
             prev2Label={null}
-            tileDisabled={({ date }) => handleDisableDates({ date})}
+            tileDisabled={({ date }) => handleDisableDates({ date })}
             minDate={today}
             maxDate={maxDate}
             prevLabel={(<IoArrowBack size={22}/>)}
@@ -152,7 +161,7 @@ const JetskiDetail = ({ jetski, jetskis }) => {
               onChange={setCurrentDate}
               next2Label={null}
               prev2Label={null}
-              tileDisabled={({ date }) => handleDisableDates({ date})}
+              tileDisabled={({ date }) => handleDisableDates({ date })}
               minDate={today}
               maxDate={maxDate}
               prevLabel={(<IoArrowBack size={22}/>)}

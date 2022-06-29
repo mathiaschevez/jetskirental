@@ -2,7 +2,7 @@ import dayjs from 'dayjs'
 import React, { useEffect, useState } from 'react'
 import Calendar from 'react-calendar'
 import { IoArrowBack, IoArrowForward } from 'react-icons/io5'
-import { client } from '../lib/client'
+import { client, urlFor } from '../lib/client'
 
 const CalendarPage = ({ jetskis }) => {
   const [currentDate, setCurrentDate] = useState(new Date())
@@ -13,12 +13,22 @@ const CalendarPage = ({ jetskis }) => {
   maxDate.setMonth(maxDate.getMonth() + 2)
 
   useEffect(() => {
-    jetskis.filter((jetski) => {
-      return jetski?.bookings?.filter((day) => {
-        return dayjs(day).format('YYYY-MM-DD') === dayjs(currentDate).format('YYYY-MM-DD')
-      }).length < jetski.quantity
+    let availableJetkis = jetskis.filter((jetski) => {
+      if(jetski.bookings !== undefined) {
+        return jetski.bookings?.filter((day) => {
+          return dayjs(day).format('YYYY-MM-DD') === dayjs(currentDate).format('YYYY-MM-DD')
+        }) < jetski.quantity
+      } else {
+        return jetski
+      }
     })
+
+    console.log(dayjs(currentDate).format('YYYY-MM-DD'))
+    console.log(availableJetkis)
+    setAvailableJetskis(availableJetkis)
   }, [currentDate])
+
+  console.log()
 
   return (
     <div className='py-12 lg:py-16 lg:w-2/3 m-auto'>
@@ -43,9 +53,15 @@ const CalendarPage = ({ jetskis }) => {
         </div>
       </div>
       <div className='mt-6 px-3'>
-        {jetskis?.map((jetski) => (
-          <h1 key={jetski._id}>{jetski.name}</h1>
-        ))}
+        <h1 className='text-xl font-semibold mb-3'>Available jetskis</h1>
+        <div>
+          {availableJetskis?.map((jetski) => (
+            <div key={jetski._id}>
+              <img src={urlFor(jetski.image[0])} className='rounded m-auto'/>
+              <h1>{jetski.name}</h1>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )
