@@ -61,12 +61,8 @@ const JetskiDetail = ({ jetski, jetskis }) => {
       return jetski._id === item._id && item?.days.includes(dayjs(date).format('YYYY-MM-DD'))
     })
 
-    console.log(daysInCart)
-
     return (daysInCart.length === 1) ||  (daysInDb?.length === jetski?.quantity) || (dayjs(date).format('ddd') === 'Sun')
   }
-
-  // console.log(cartItems)
 
   return (
     <div className='py-12 lg:py-16 lg:w-2/3 m-auto'>

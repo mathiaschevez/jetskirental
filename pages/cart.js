@@ -8,12 +8,6 @@ import Link from 'next/link'
 const Cart = () => {
   const { cartItems, clearCart, handleCheckout} = useStateContext()
 
-  console.log(cartItems)
-
-  // useEffect(() => {
-    
-  // }, [cartItems])
-
   if(cartItems.length === 0) return (
     <div className='py-12 flex flex-col gap-9 items-center lg:w-2/3 m-auto'>
       <h1 className='text-xl font-semibold'>NO JETSKIS SCHEDULED</h1>

@@ -34,10 +34,8 @@ const CalendarPage = ({ jetskis }) => {
     let jetskisNotSelected = availableJetkis.filter((jetski) => {
       return cartItems.filter((item) => {
         return item._id === jetski._id && item.days.includes(dayjs(currentDate).format('YYYY-MM-DD'))
-      }).length !== jetski.quantity
+      }).length === 0
     })
-
-    console.log(jetskisNotSelected)
 
     setJetskisToShow(jetskisNotSelected)
   }
