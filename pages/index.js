@@ -7,7 +7,7 @@ const Home = ({ jetskis }) => {
   return (
     <div className='flex flex-col lg:justify-center'>
       <Head>
-        <title>Ski Rentals</title>
+        <title>Work 2 Play Rentals</title>
         <meta name="description" content="We offer top of the line ski rentals." />
         <link rel="icon" href="/favicon.ico" />
       </Head> 

@@ -15,7 +15,7 @@ const CalendarPage = ({ jetskis }) => {
 
   const today = new Date()
   const maxDate = new Date(today)
-  maxDate.setMonth(maxDate.getMonth() + 2)
+  maxDate.setMonth(maxDate.getMonth() + 3)
 
   useEffect(() => {
     findAvailableJetskis()
@@ -66,7 +66,7 @@ const CalendarPage = ({ jetskis }) => {
     <div className='py-9 sm:py-12 md:py-12 lg:py-9 lg:w-2/3 m-auto lg:my-16 lg:border lg:px-9 rounded'>
       <div className='px-3 lg:px-0 mb-6'>
         <h1 className='text-2xl font-semibold'>Calendar</h1>
-        <h1>Select days to view available jetskis</h1>
+        <h1>Select day to view available jetskis</h1>
       </div>
       <div className='flex flex-col  gap-9 w-full items-center xl:items-start'>
         <div className='flex flex-col items-center px-3 lg:px-0 md:w-2/3 lg:w-full xl:w-2/3 2xl:w-1/3 m-auto lg:m-0'>
@@ -76,6 +76,7 @@ const CalendarPage = ({ jetskis }) => {
             onChange={setCurrentDate}
             next2Label={null}
             prev2Label={null}
+            tileDisabled={({ date }) => (dayjs(date).format('ddd') === 'Sun')}
             minDate={today}
             maxDate={maxDate}
             prevLabel={(<IoArrowBack size={22}/>)}

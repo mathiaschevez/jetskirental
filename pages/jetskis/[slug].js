@@ -17,7 +17,7 @@ const JetskiDetail = ({ jetski, jetskis }) => {
 
   const today = new Date()
   const maxDate = new Date(today)
-  maxDate.setMonth(maxDate.getMonth() + 2)
+  maxDate.setMonth(maxDate.getMonth() + 3)
 
   useEffect(() => {
     if(!daysSelected.length > 0) {
