@@ -29,7 +29,7 @@ const Success = () => {
           <h1>Download</h1>
           <AiOutlineDownload className={`${bounceActive && 'animate-bounce'}`} size={30}/>
         </a>
-        <button className='transition ease-in-out text-[#00A7C3] hover:text-white hover:bg-[#00A7C3] border  border-[#00A7C3] font-semibold w-2/3 md:w-1/2 rounded py-3 mt-6' onClick={() => handleToHome()}>Back to home</button>
+        <button disabled={bounceActive} className='transition ease-in-out text-[#00A7C3] hover:text-white hover:bg-[#00A7C3] border  border-[#00A7C3] font-semibold w-2/3 md:w-1/2 rounded py-3 mt-6' onClick={() => handleToHome()}>Back to home</button>
       </div>
     </div>
   )
