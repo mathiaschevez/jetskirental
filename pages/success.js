@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { useStateContext } from '../context/StateContext'
 import { AiOutlineDownload } from 'react-icons/ai'
+import toast from 'react-hot-toast'
 
 const Success = () => {
   const { cartItems, clearCart, updateJetski } = useStateContext()
@@ -29,7 +30,7 @@ const Success = () => {
           <h1>Download</h1>
           <AiOutlineDownload className={`${bounceActive && 'animate-bounce'}`} size={30}/>
         </a>
-        <button disabled={bounceActive} className='transition ease-in-out text-[#00A7C3] hover:text-white hover:bg-[#00A7C3] border  border-[#00A7C3] font-semibold w-2/3 md:w-1/2 rounded py-3 mt-6' onClick={() => handleToHome()}>Back to home</button>
+        <button disabled={bounceActive} className={`${!bounceActive && 'text-[#00A7C3] hover:bg-[#00A7C3] hover:text-white border-[#00A7C3] cursor-pointer' } transition ease-in-out border font-semibold w-2/3 md:w-1/2 rounded py-3 mt-6`} onClick={() => handleToHome()}>Back to home</button>
       </div>
     </div>
   )
