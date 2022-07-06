@@ -128,9 +128,9 @@ const JetskiDetail = ({ jetski, jetskis }) => {
                 </div>
                 <div className='xl:pr-3'>
                   {!viewOthers ? (
-                    <button onClick={() => setViewOthers(true)} className='xl:w-1/2 transition ease-in-out text-black border-2 rounded border-black w-full py-2 xl:py-3 hover:bg-black hover:text-white font-bold'>View Catalog</button>
+                    <button onClick={() => setViewOthers(true)} className='xl:w-1/2 transition ease-in-out text-black border-2 rounded border-black w-full py-2 xl:py-3 hover:bg-black hover:text-white font-bold'>View Others</button>
                   ) : (
-                    <button onClick={() => setViewOthers(false)} className='xl:w-1/2 transition ease-in-out text-black border-2 rounded border-black w-full py-2 xl:py-3 hover:bg-black hover:text-white font-bold'>Close Catolog</button>
+                    <button onClick={() => setViewOthers(false)} className='xl:w-1/2 transition ease-in-out text-black border-2 rounded border-black w-full py-2 xl:py-3 hover:bg-black hover:text-white font-bold'>Close</button>
                   )}
                 </div>
               </div>
@@ -142,9 +142,9 @@ const JetskiDetail = ({ jetski, jetskis }) => {
                 </div>
                 <div className='xl:pr-3'>
                   {!viewOthers ? (
-                    <button onClick={() => setViewOthers(true)} className='xl:w-1/2 transition ease-in-out text-black border-2 rounded border-black w-full py-2 xl:py-3 hover:bg-black hover:text-white font-bold'>View Catalog</button>
+                    <button onClick={() => setViewOthers(true)} className='xl:w-1/2 transition ease-in-out text-black border-2 rounded border-black w-full py-2 xl:py-3 hover:bg-black hover:text-white font-bold'>View Others</button>
                   ) : (
-                    <button onClick={() => setViewOthers(false)} className='xl:w-1/2 transition ease-in-out text-black border-2 rounded border-black w-full py-2 xl:py-3 hover:bg-black hover:text-white font-bold'>Close Catolog</button>
+                    <button onClick={() => setViewOthers(false)} className='xl:w-1/2 transition ease-in-out text-black border-2 rounded border-black w-full py-2 xl:py-3 hover:bg-black hover:text-white font-bold'>Close</button>
                   )}
                 </div>
               </div>
