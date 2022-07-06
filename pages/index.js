@@ -60,7 +60,7 @@ const Home = ({ jetskis }) => {
             <label className='font-semibold'>Email</label>
             <input className='border-2 border-[#00A7C3] rounded focus:outline-none px-2 py-1' required type="email" name="user_email" />
             <label className='font-semibold'>Message</label>
-            <textarea className='resize-none border-2 border-[#00A7C3] rounded focus:outline-none px-2 py-1' required name="message" />
+            <textarea className='h-28 resize-none border-2 border-[#00A7C3] rounded focus:outline-none px-2 py-1' required name="message" />
             <input className='font-semibold bg-[#00A7C3] text-white m-auto w-full py-3 mt-6 rounded cursor-pointer' type="submit" value="Send" />
           </form>
           <div className='flex flex-col gap-2 md:w-1/2 mt-3'>
