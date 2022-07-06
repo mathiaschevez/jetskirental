@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
       <main className='pt-12'>
         {children}
       </main>
-      <footer className={`${layoutHidden ? 'hidden' : 'block'}`}>
+      <footer>
         <Footer />
       </footer>
     </div>
