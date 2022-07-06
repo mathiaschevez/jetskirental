@@ -5,7 +5,7 @@ import banner from '../assets/jetskiheader2.JPG'
 const Header = () => {
   return (
     <div className='w-screen'>
-      <div className='mt-9 lg:mt-8 xl:mt-8 m-auto'>
+      <div className='mt-8 lg:mt-8 xl:mt-8 m-auto'>
         <Image src={banner} sizes='100%' objectFit='contain'/>
       </div>
     </div>
