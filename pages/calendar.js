@@ -27,7 +27,8 @@ const CalendarPage = ({ jetskis }) => {
       if(jetski.bookings !== undefined) {
         return jetski.bookings?.filter((day) => {
           return dayjs(day).format('YYYY-MM-DD') === dayjs(currentDate).format('YYYY-MM-DD')
-        }) < jetski.quantity
+        }).length < jetski.quantity
+
       } else {
         return jetski
       }
@@ -38,7 +39,7 @@ const CalendarPage = ({ jetskis }) => {
         return item._id === jetski._id && item.days.includes(dayjs(currentDate).format('YYYY-MM-DD'))
       }).length === 0
     })
-
+    
     setJetskisToShow(jetskisNotSelected)
   }
 
