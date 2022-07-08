@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { urlFor } from '../lib/client'
 import dayjs from 'dayjs'
 import { useStateContext } from '../context/StateContext'
 import Link from 'next/link'
 
 const Cart = () => {
-  const { cartItems, clearCart, handleCheckout} = useStateContext()
+  const { cartItems, clearCart, handleCheckout, setCartItems } = useStateContext()
+
+  useEffect(() => {}, [cartItems])
 
   if(cartItems.length === 0) return (
     <div className='py-12 flex flex-col gap-9 items-center lg:w-2/3 m-auto'>
@@ -15,6 +17,34 @@ const Cart = () => {
       </Link>
     </div>
   )
+
+  const handleQtyChange = (e, itemId) => {
+    const updatedCartItems = cartItems.map((cartItem) => {
+      if(cartItem._id === itemId) {
+        let price = 1
+        if(e.target.value === '1') {
+          price = cartItem.price / 2
+        } else {
+          price = cartItem.price * 2
+        }
+
+        return {
+          ...cartItem,
+          qty: Number(e.target.value),
+          price: price,
+        }
+      } else {
+        return { 
+          ...cartItem
+        }
+      }
+    })
+
+    setCartItems(updatedCartItems)
+    if (typeof window !== "undefined") {
+      localStorage.setItem('cartItems', JSON.stringify(updatedCartItems))
+    }
+  }
 
   return (
     <div className='px-3 xl:w-2/3 flex justify-center flex-col items-center m-auto py-6'>
@@ -30,12 +60,25 @@ const Cart = () => {
                   <h1 className='font-semibold lg:text-2xl'>{item?.name}</h1>
                 </div>
                 <div className='flex flex-col gap-1 justify-between w-1/2'>
-                  <div>
-                    <div className='flex mt-6'>
+                  <div >
+                    <div className='flex md:mt-6'>
                       <h1 className='lg:text-lg font-semibold'>$</h1>
                       <h1 className='font-semibold md:text-xl lg:text-2xl xl:text-3xl'>{item?.days.length * item?.price}</h1>
                     </div>
                     <h1 className='font-semibold mt-3 xl:text-lg'>{item?.days?.length} days scheduled</h1>
+                    <div className='flex justify-between gap-3 rounded border  my-1 p-2 w-full md:w-2/3 items-center'>
+                      <label for="qty">Qty</label>
+                      {item?.quantity > 1 ? (
+                        <select value={item?.qty} onChange={(e) => handleQtyChange(e, item._id)} className='flex border border-slate-400 px-2 py-1 focus:outline-none rounded' id="qty">
+                          <option>{1}</option>
+                          <option>{2}</option>
+                        </select>
+                      ) : (
+                        <select id='qty'>
+                          <opttion>1</opttion>
+                        </select>
+                      )}
+                    </div>
                   </div>
                   <div className='grid grid-cols-2 md:grid-cols-2 gap-1'>
                     {item?.days?.map((day, i) => (
