@@ -7,8 +7,6 @@ import Link from 'next/link'
 const Cart = () => {
   const { cartItems, clearCart, handleCheckout, setCartItems } = useStateContext()
 
-  useEffect(() => {}, [cartItems])
-
   if(cartItems.length === 0) return (
     <div className='py-12 flex flex-col gap-9 items-center lg:w-2/3 m-auto'>
       <h1 className='text-xl font-semibold mt-3'>NO JETSKIS SCHEDULED</h1>
@@ -67,11 +65,11 @@ const Cart = () => {
                     </div>
                     <h1 className='font-semibold mt-3 xl:text-lg'>{item?.days?.length} days scheduled</h1>
                     <div className='flex justify-between gap-3 rounded border  my-1 p-2 w-full md:w-2/3 items-center'>
-                      <label for="qty">Qty</label>
+                      <label htmlFor="qty">Qty</label>
                       {item?.quantity > 1 ? (
                         <select value={item?.qty} onChange={(e) => handleQtyChange(e, item._id)} className='flex border border-slate-400 px-2 py-1 focus:outline-none rounded' id="qty">
-                          <option>{1}</option>
-                          <option>{2}</option>
+                          <option>1</option>
+                          <option>2</option>
                         </select>
                       ) : (
                         <select id='qty'>

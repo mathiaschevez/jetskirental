@@ -8,18 +8,20 @@ const Context = createContext()
 
 export const StateContext = ({children}) => {
   const [cartItems, setCartItems] = useState([])
+  const [totalPrice, setTotalPrice] = useState(0)
   const [isAdding, setIsAdding] = useState(false)
   const [daysSelected, setDaysSelected] = useState([])
   const [viewOthers, setViewOthers ] = useState(false)
 
   useEffect(() => {
     checkForCart()
-  }, [])
+  }, [totalPrice])
 
   const checkForCart = () => {
     if (typeof window !== "undefined") {
       if(!localStorage.getItem('cartItems')) {
         localStorage.setItem('cartItems', JSON.stringify(cartItems))
+        localStorage.setItem('totalPRice', totalPrice)
       } else {
         setCartItems(JSON.parse(localStorage.getItem('cartItems')))
       }
@@ -28,6 +30,7 @@ export const StateContext = ({children}) => {
 
   const onAdd = (jetski, days ) => {
     const checkJetskiInCart = cartItems.find((item) => item._id === jetski._id)
+    setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price);
 
     if(checkJetskiInCart) {
       const updatedCartItems = cartItems.map((cartItem) => {
@@ -47,6 +50,7 @@ export const StateContext = ({children}) => {
       setCartItems(updatedCartItems)
       if (typeof window !== "undefined") {
         localStorage.setItem('cartItems', JSON.stringify(updatedCartItems))
+        localStorage.setItem('totalPRice', totalPrice)
       }
     } else {
       jetski.days = days
@@ -54,6 +58,7 @@ export const StateContext = ({children}) => {
       setCartItems([...cartItems, { ...jetski }])
       if (typeof window !== "undefined") {
         localStorage.setItem('cartItems', JSON.stringify([...cartItems, { ...jetski }]))
+        localStorage.setItem('totalPRice', totalPrice)
       }
     }
 
