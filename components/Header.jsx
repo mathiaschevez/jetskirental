@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import banner from '../assets/jetskiheader2.JPG'
+import banner from '../assets/Website_Banner.jpg'
 
 const Header = () => {
   return (
