@@ -73,7 +73,7 @@ const Cart = () => {
                         </select>
                       ) : (
                         <select id='qty'>
-                          <opttion>1</opttion>
+                          <option>1</option>
                         </select>
                       )}
                     </div>
