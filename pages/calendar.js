@@ -77,7 +77,7 @@ const CalendarPage = ({ jetskis }) => {
             onChange={setCurrentDate}
             next2Label={null}
             prev2Label={null}
-            tileDisabled={({ date }) => (dayjs(date).format('ddd') === 'Sun')}
+            // tileDisabled={({ date }) => (dayjs(date).format('ddd') === 'Sun')}
             minDate={today}
             maxDate={maxDate}
             prevLabel={(<IoArrowBack size={22}/>)}

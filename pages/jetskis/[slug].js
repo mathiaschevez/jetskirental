@@ -61,7 +61,9 @@ const JetskiDetail = ({ jetski, jetskis }) => {
       return jetski._id === item._id && item?.days.includes(dayjs(date).format('YYYY-MM-DD'))
     })
 
-    return (daysInCart.length === 1) ||  (daysInDb?.length === jetski?.quantity) || (dayjs(date).format('ddd') === 'Sun')
+    return (daysInCart.length === 1) ||  (daysInDb?.length === jetski?.quantity)
+    // ADD THIS TO DISABLE WEEK DAYS
+    // || (dayjs(date).format('ddd') === 'Sun')
   }
 
   return (
