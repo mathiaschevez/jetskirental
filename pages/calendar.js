@@ -44,10 +44,10 @@ const CalendarPage = ({ jetskis }) => {
   }
 
   const handleAdd = (jetski) => {
-    if(dayjs(currentDate).format('YYYY-MM-DD') === dayjs(today).format('YYYY-MM-DD')) {
-      toast.error('You can\'t book today')
-      return
-    }
+    // if(dayjs(currentDate).format('YYYY-MM-DD') === dayjs(today).format('YYYY-MM-DD')) {
+    //   toast.error('You can\'t book today')
+    //   return
+    // }
 
     onAdd(jetski, daysSelected)
     setCurrentDate(new Date())
