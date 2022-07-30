@@ -38,11 +38,13 @@ export const StateContext = ({children}) => {
           const daysToAdd = days.filter((day) => !cartItem.days.includes(day))
           return {
             ...cartItem,
-            days: [...cartItem.days, ...daysToAdd]
+            days: [...cartItem.days, ...daysToAdd],
+            qty: 1,
           }
         } else {
           return { 
-            ...cartItem
+            ...cartItem,
+            qty: 1,
           }
         }
       })
@@ -54,6 +56,7 @@ export const StateContext = ({children}) => {
       }
     } else {
       jetski.days = days
+      jetski.qty = 1
 
       setCartItems([...cartItems, { ...jetski }])
       if (typeof window !== "undefined") {

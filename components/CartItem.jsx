@@ -18,7 +18,8 @@ const CartItem = ({ jetski }) => {
     
     findDbJetski()
     handleSelectionOptions()
-  }, [dbjetski])
+  }, [])
+  // [dbjetski]
 
   // console.log(dbjetski)
 
@@ -39,7 +40,7 @@ const CartItem = ({ jetski }) => {
         }
       } else {
         return { 
-          ...cartItem
+          ...cartItem,
         }
       }
     })

@@ -9,11 +9,12 @@ export default async function handler(req, res) {
       const params = {
         submit_type: 'pay',
         mode: 'payment',
+        allow_promotion_codes: true,
         payment_method_types: ['card'],
         billing_address_collection: 'auto',
         line_items: req.body.map((item) => {
           const newImage = urlFor(item.image[0]).toString()
-          const description = item.qty + ' jetski(s) | ' + ' Days: ' + item?.days?.toString()
+          const description = item?.qty + ' jetski(s) | ' + ' Days: ' + item?.days?.toString()
 
           return {
             price_data: {
