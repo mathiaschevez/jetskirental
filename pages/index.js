@@ -28,11 +28,6 @@ const Home = ({ jetskis }) => {
     toast.success('Email copied to clipboard!')
   }
 
-  const copyAddress = () => {
-    navigator.clipboard.writeText('2618 W 800 N Clinton, UT 84015')
-    toast.success('Address copied to clipboard!')
-  }
-
   return (
     <div className='flex flex-col lg:justify-center'>
       <Head>
@@ -52,7 +47,7 @@ const Home = ({ jetskis }) => {
         </div>
       </div>
       <div className='w-full px-3 py-6 m-auto xl:w-2/3'>
-        <h1 className='font-semibold text-2xl xl:text-4xl'>Contact</h1>
+        <h1 className='font-semibold text-2xl xl:text-4xl mb-3'>Contact</h1>
         <div className='flex flex-col md:flex-row gap-3'>
           <form ref={form} onSubmit={sendEmail} className='border flex flex-col gap-2 md:w-1/2 mt-3 p-6 rounded'>
             <label className='font-semibold'>Name</label>
@@ -68,12 +63,7 @@ const Home = ({ jetskis }) => {
             <button onClick={() => copyEmail()} className='hover:text-[#00A7C3] hover:border-[#00A7C3] border rounded p-2 flex justify-between text-lg items-center'>
               <h1>work2playutah@gmail.com</h1>
               <FiCopy className='cursor-pointer' size={24}/>
-            </button>      
-            <h1 className='mt-3'>Address</h1>      
-            <button onClick={() => copyAddress()} className='hover:text-[#00A7C3] hover:border-[#00A7C3] border rounded p-2 flex justify-between text-lg items-center'>
-              <h1>2618 W 800 N Clinton, UT 84015</h1>
-              <FiCopy className='cursor-pointer' size={24}/>
-            </button>            
+            </button>              
           </div>
         </div>
       </div>

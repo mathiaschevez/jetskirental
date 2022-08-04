@@ -5,6 +5,7 @@ import { AiOutlineDownload } from 'react-icons/ai'
 import toast from 'react-hot-toast'
 import Image from 'next/image'
 import logo from '../assets/LOGOS_PRIMARY-BLACK.png'
+import { FiCopy } from 'react-icons/fi'
 
 const Success = () => {
   const { cartItems, clearCart, updateJetski } = useStateContext()
@@ -22,6 +23,11 @@ const Success = () => {
     router.push('/')
   }
 
+  const copyAddress = () => {
+    navigator.clipboard.writeText('2618 W 800 N Clinton, UT 84015')
+    toast.success('Address copied to clipboard!')
+  }
+
   return (
     <div className='px-3 flex flex-col items-center text-center mb-9'>
       <Image src={logo} alt='logo' width={180} height={69} objectFit='contain'/>
@@ -35,6 +41,11 @@ const Success = () => {
         </a>
         <button disabled={bounceActive} className={`${!bounceActive && 'text-[#00A7C3] hover:bg-[#00A7C3] hover:text-white border-[#00A7C3] cursor-pointer' } transition ease-in-out border font-semibold w-2/3 md:w-1/2 rounded py-3 mt-6`} onClick={() => handleToHome()}>Back to home</button>
       </div>
+      <h1 className='mt-6 mb-3 text-lg'>Address</h1>      
+      <button onClick={() => copyAddress()} className='hover:text-[#00A7C3] hover:border-[#00A7C3] border rounded p-2 flex justify-between text-lg items-center gap-20'>
+        <h1>2618 W 800 N Clinton, UT 84015</h1>
+        <FiCopy className='cursor-pointer' size={24}/>
+      </button>    
     </div>
   )
 }
