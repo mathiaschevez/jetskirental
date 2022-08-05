@@ -25,7 +25,7 @@ const Jetski = ({ jetski }) => {
         </div>
         <div>
           <Link href={`/jetskis/${jetski?.slug.current}`}>
-            <button onClick={() => handleJetskiSwitch()} className='transition ease-in-out hover:bg-[#00A7C3] hover:text-white bg-white border-[#00A7C3] border flex justify-center gap-6 items-center text-[#00A7C3] w-full mb-3 rounded py-3 xl:py-2 font-bold'>Book Now <BsFillArrowRightCircleFill size={22}/> </button>
+            <button onClick={() => handleJetskiSwitch()} className='transition ease-in-out hover:bg-[#00A7C3] hover:text-white bg-white border-[#00A7C3] border-2 flex justify-center gap-6 items-center text-[#00A7C3] w-full mb-3 rounded py-3 xl:py-2 font-bold'>Book Now <BsFillArrowRightCircleFill size={22}/> </button>
           </Link>
         </div>
     </div>
