@@ -41,6 +41,11 @@ const CalendarPage = ({ jetskis, blockedDays }) => {
     })
     
     setJetskisToShow(jetskisNotSelected)
+    if(blockedDays?.blockedDays?.includes(dayjs(currentDate).format('YYYY-MM-DD'))) {
+      setJetskisToShow([])
+    } else {
+      setJetskisToShow(jetskisNotSelected)
+    }
   }
 
   const handleAdd = (jetski) => {
