@@ -9,7 +9,7 @@ import { AiOutlineCloseCircle } from 'react-icons/ai'
 import { useStateContext } from '../../context/StateContext'
 import toast from 'react-hot-toast'
 
-const JetskiDetail = ({ jetski, jetskis }) => {
+const JetskiDetail = ({ jetski, jetskis, blockedDays }) => {
   const { cartItems, onAdd, daysSelected, setDaysSelected, viewOthers, setViewOthers } = useStateContext()
   const [currentDate, setCurrentDate] = useState(new Date())
   const [removing, setRemoving] = useState(-1)
@@ -18,6 +18,8 @@ const JetskiDetail = ({ jetski, jetskis }) => {
   const today = new Date()
   const maxDate = new Date(today)
   maxDate.setMonth(maxDate.getMonth() + 3)
+
+  console.log(blockedDays.blockedDays)
 
   useEffect(() => {
     if(!daysSelected.length > 0) {
@@ -61,7 +63,7 @@ const JetskiDetail = ({ jetski, jetskis }) => {
       return jetski._id === item._id && item?.days.includes(dayjs(date).format('YYYY-MM-DD'))
     })
 
-    return (daysInCart.length === 1) ||  (daysInDb?.length === jetski?.quantity)
+    return (daysInCart.length === 1) ||  (daysInDb?.length === jetski?.quantity) || blockedDays?.blockedDays?.includes(dayjs(date).format('YYYY-MM-DD'))
     // ADD THIS TO DISABLE WEEK DAYS
     // || (dayjs(date).format('ddd') === 'Sun')
   }
@@ -210,12 +212,14 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params: { slug }}) => {
   const query = `*[_type == "jetski" && slug.current == '${slug}'][0]`
   const allQuery = `*[_type == "jetski" && slug.current != '${slug}']`
+  const blockedDaysQuery = `*[_type == "blockedDays"][0]`
 
   const jetski = await client.fetch(query)
   const jetskis = await client.fetch(allQuery)
+  const blockedDays = await client.fetch(blockedDaysQuery)
 
   return {
-    props: { jetski, jetskis }
+    props: { jetski, jetskis, blockedDays }
   }
 }
 

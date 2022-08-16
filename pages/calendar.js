@@ -7,7 +7,7 @@ import { IoArrowBack, IoArrowForward } from 'react-icons/io5'
 import { useStateContext } from '../context/StateContext'
 import { client, urlFor } from '../lib/client'
 
-const CalendarPage = ({ jetskis }) => {
+const CalendarPage = ({ jetskis, blockedDays }) => {
   const { cartItems, onAdd, setDaysSelected, daysSelected } = useStateContext() 
   const [currentDate, setCurrentDate] = useState(new Date())
   const [jetskisToShow, setJetskisToShow] = useState([])
@@ -77,7 +77,7 @@ const CalendarPage = ({ jetskis }) => {
             onChange={setCurrentDate}
             next2Label={null}
             prev2Label={null}
-            // tileDisabled={({ date }) => (dayjs(date).format('ddd') === 'Sun')}
+            tileDisabled={({ date }) => blockedDays.blockedDays.includes(dayjs(date).format('YYYY-MM-DD'))}
             minDate={today}
             maxDate={maxDate}
             prevLabel={(<IoArrowBack size={22}/>)}
@@ -113,11 +113,14 @@ const CalendarPage = ({ jetskis }) => {
 
 export const getServerSideProps = async () => {
   const query = '*[_type == "jetski"]'
+  const blockedDaysQuery = `*[_type == "blockedDays"][0]`
+
   const jetskis = await client.fetch(query)
+  const blockedDays = await client.fetch(blockedDaysQuery)
 
   return {
     props: {
-      jetskis
+      jetskis, blockedDays
     }
   }
 }
