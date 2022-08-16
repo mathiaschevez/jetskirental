@@ -6,8 +6,7 @@ export default {
     {
       name: 'extra',
       title: 'Extra',
-      type: 'array',
-      of: [{ type: 'document'}],
+      type: 'string',
     },
   ]
 }
