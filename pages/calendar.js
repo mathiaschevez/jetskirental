@@ -20,6 +20,7 @@ const CalendarPage = ({ jetskis, blockedDays }) => {
   useEffect(() => {
     findAvailableJetskis()
     setDaysSelected([dayjs(currentDate).format('YYYY-MM-DD')])
+    console.log(currentDate)
   }, [currentDate])
 
   const findAvailableJetskis = () => {
@@ -82,7 +83,7 @@ const CalendarPage = ({ jetskis, blockedDays }) => {
             onChange={setCurrentDate}
             next2Label={null}
             prev2Label={null}
-            tileDisabled={({ date }) => blockedDays.blockedDays.includes(dayjs(date).format('YYYY-MM-DD'))}
+            tileDisabled={({ date }) => blockedDays?.blockedDays?.includes(dayjs(date).format('YYYY-MM-DD'))}
             minDate={today}
             maxDate={maxDate}
             prevLabel={(<IoArrowBack size={22}/>)}

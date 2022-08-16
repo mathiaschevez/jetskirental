@@ -19,8 +19,6 @@ const JetskiDetail = ({ jetski, jetskis, blockedDays }) => {
   const maxDate = new Date(today)
   maxDate.setMonth(maxDate.getMonth() + 3)
 
-  console.log(blockedDays?.blockedDays)
-
   useEffect(() => {
     if(!daysSelected.length > 0) {
       setRemoving(-1)
