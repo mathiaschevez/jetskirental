@@ -9,5 +9,10 @@ export default {
       type: 'array',
       of: [{ type: 'date'}],
     },
+    {
+      name: 'key',
+      title: 'Key',
+      type: 'string',
+    }
   ]
 }
