@@ -121,7 +121,8 @@ export const getServerSideProps = async () => {
   return {
     props: {
       jetskis, blockedDays
-    }
+    },
+    revalidate: 10
   }
 }
 

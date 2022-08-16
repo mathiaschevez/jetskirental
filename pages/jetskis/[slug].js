@@ -219,8 +219,10 @@ export const getStaticProps = async ({ params: { slug }}) => {
   const blockedDays = await client.fetch(blockedDaysQuery)
 
   return {
-    props: { jetski, jetskis, blockedDays }
+    props: { jetski, jetskis, blockedDays },
+    revalidate: 10
   }
+  
 }
 
 export default JetskiDetail
