@@ -1,11 +1,11 @@
 {
   "root": true,
-  "project": {
-    "name": "skirentals"
-  },
   "api": {
     "projectId": "vitr3pqf",
     "dataset": "production"
+  },
+  "project": {
+    "name": "skirentals"
   },
   "plugins": [
     "@sanity/base",
